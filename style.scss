@@ -11,8 +11,29 @@ $link-col: #1a9cb0;
 $grey-col: #999999;
 $black-col: #222222;
 $table-col: #f8eff8;
-$arrow-width: 30px;
+$arrow-width: 2vw;
+$arrow-min-width: 18px;
 $basic-transition: all 0.3s ease;
+$min-content-width: 750px;
+@mixin responsive($breakpoint) {
+	@if $breakpoint == mobile {
+		@media screen and (max-width: 520px) {
+			@content;
+		}
+	} @else if $breakpoint == tablet {
+		@media screen and (max-width: 768px) {
+			@content;
+		}
+	} @else if $breakpoint == desktop {
+		@media screen and (min-width: 769px) and (max-width: 1220px) {
+			@content;
+		}
+	} @else {
+		// Fallback styles
+		@content;
+	}
+}
+
 body {
 	font-family: "Roboto";
 	display: flex;
@@ -24,17 +45,27 @@ body {
 
 hr {
 	width: 40%;
-	min-width: 350px;
+    
+	min-width: 320px;
 	border-color: $black-col;
+
+    @include responsive(mobile) {
+        min-width: 80%;
+    }
 }
 
 main {
 	width: 66%;
-	min-width: 670px;
+	min-width: $min-content-width;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	box-shadow: 0 0 10px #ccc;
+
+	@include responsive(tablet) {
+		width: 100%;
+		min-width: 100%;
+	}
 }
 
 h1 {
@@ -71,16 +102,38 @@ select {
 	padding: 8px 5px;
 }
 
-header input {
-	margin-right: 10px;
-	width: 200px;
-	transition: width 0.4s ease-out;
-
-	&:hover {
-		width: 350px;
+header {
+	& form {
+		display: flex;
 	}
-}
+	& input {
+		margin-right: 10px;
+		width: 190px;
+		transition: width 0.4s ease-out;
 
+		&:hover {
+			width: 340px;
+		}
+        @include responsive(mobile) {
+            
+                width: 100%;
+                &:hover {
+                    width: 65vw;
+                }
+            
+        }
+        @include responsive(desktop) {
+            &:hover {
+                    width: 290px
+                }
+            
+        }
+	}
+	@include responsive(tablet) {
+		flex-direction: column;
+	}
+	
+}
 .btn {
 	padding: 10px 20px;
 	background: white;
@@ -123,6 +176,30 @@ nav {
 			}
 		}
 	}
+
+	@include responsive(mobile) {
+		flex-direction: column;
+		& ul {
+			margin: 5px 0;
+		}
+	}
+
+	@include responsive(tablet) {
+		align-items: center;
+		flex-wrap: wrap;
+		justify-items: center;
+		& * {
+			font-size: 0.9rem;
+		}
+		& ul {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		& li {
+			margin: 10px;
+		}
+	}
 }
 
 h2 {
@@ -154,6 +231,30 @@ h2 {
 			margin-left: 14px;
 		}
 	}
+
+	@include responsive(tablet) {
+		flex-wrap: wrap;
+		justify-content: center;
+		& div {
+			min-height: 30px;
+			margin: 5px 0;
+		}
+	}
+	@include responsive(mobile) {
+		flex-direction: column;
+		align-content: stretch;
+
+		& div {
+			justify-content: center;
+			border: none;
+			padding: 10px 0;
+			margin: 0;
+			border-top: 2px dashed $grey-col;
+			&:nth-child(1) {
+				border: none;
+			}
+		}
+	}
 }
 
 .top-teachers-container {
@@ -162,7 +263,26 @@ h2 {
 	grid-template-columns: 20% 20% 20% 20% 20%;
 	gap: 0px 0px;
 	justify-items: stretch;
-	/*grid-gap: 20px;*/
+
+	@include responsive(tablet) {
+		grid-template-columns: 33.3% 33.3% 33.3%;
+		& .teacher-card .photo-container {
+			width: 20vw;
+			height: 20vw;
+			min-width: 110px;
+			min-height: 110px;
+		}
+	}
+	@include responsive(mobile) {
+		grid-template-columns: 50% 50%;
+
+		& .teacher-card .photo-container {
+			width: 35vw;
+			height: 35vw;
+			min-width: 90px;
+			min-height: 90px;
+		}
+	}
 }
 
 .teacher-card {
@@ -223,7 +343,9 @@ h2 {
 		}
 	}
 }
-
+.table-container {
+	overflow-y: hidden;
+}
 .statistics-table {
 	width: 100%;
 	& thead {
@@ -301,6 +423,8 @@ h2 {
 		}
 	}
 	& .arrow {
+        display: block;
+        
 		width: $arrow-width;
 		height: $arrow-width * 1.5;
 		position: absolute;
@@ -317,6 +441,17 @@ h2 {
 		&:hover {
 			opacity: 1;
 		}
+
+        @include responsive(tablet) {
+            width: $arrow-min-width;
+            height: $arrow-min-width * 1.5;
+            &.arrow-left {
+                left: -$arrow-min-width;
+            }
+            &.arrow-right {
+                right: -$arrow-min-width;
+            }
+        }
 	}
 }
 
@@ -324,110 +459,5 @@ footer {
 	& p {
 		text-align: left;
 		padding: 10px 0;
-	}
-}
-@media screen and (max-width: 678px) {
-	header {
-		flex-direction: column;
-	}
-
-	nav {
-		align-items: center;
-		flex-wrap: wrap;
-		justify-items: center;
-		& * {
-			font-size: 0.9rem;
-		}
-		& ul {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-		}
-		& {
-			margin: 10px;
-		}
-	}
-
-	main {
-		width: 100%;
-		min-width: 100%;
-	}
-
-	.filters-container {
-		flex-wrap: wrap;
-		justify-content: center;
-		& div {
-			min-height: 30px;
-			margin: 5px 0;
-		}
-	}
-
-	.top-teachers-container {
-		display: grid;
-		width: 100%;
-		grid-template-columns: 33.3% 33.3% 33.3%;
-		gap: 0px 0px;
-		justify-items: stretch;
-		/*grid-gap: 20px;*/
-	}
-
-	.teacher-card {
-		& .photo-container {
-			width: 20vw;
-			height: 20vw;
-			min-width: 110px;
-			min-height: 110px;
-		}
-	}
-	.table-container {
-		overflow-y: hidden;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	header {
-		& form {
-			display: flex;
-		}
-		& input {
-			width: 100%;
-		}
-	}
-
-	nav {
-		flex-direction: column;
-		& ul {
-			margin: 5px 0;
-		}
-	}
-
-	.filters-container {
-		flex-direction: column;
-		align-content: stretch;
-
-		& div {
-			justify-content: center;
-			border: none;
-			padding: 10px 0;
-			margin: 0;
-			border-top: 2px dashed $grey-col;
-			&:nth-child(1) {
-				border: none;
-			}
-		}
-	}
-	.top-teachers-container {
-		grid-template-columns: 50% 50%;
-		gap: 0px 0px;
-		justify-items: stretch;
-		/*grid-gap: 20px;*/
-		& .teacher-card {
-			& .photo-container {
-				width: 35vw;
-				height: 35vw;
-				min-width: 90px;
-				min-height: 90px;
-			}
-		}
 	}
 }

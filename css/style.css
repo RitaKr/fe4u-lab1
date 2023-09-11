@@ -493,6 +493,13 @@ footer p {
 .popup main {
   overflow-y: auto;
   max-height: 90vh;
+  position: relative;
+}
+.popup .star {
+  width: 22px;
+  position: absolute;
+  top: 22px;
+  right: 15px;
 }
 @media screen and (max-width: 520px) {
   .popup article {

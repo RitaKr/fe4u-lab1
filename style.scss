@@ -529,7 +529,6 @@ footer {
 	color: $black-col;
 	font-size: 0.75rem;
 	text-align: left;
-	
 
 	& > * {
 		padding: $small-padding;
@@ -548,6 +547,13 @@ footer {
 	& main {
 		overflow-y: auto;
 		max-height: 90vh;
+		position: relative;
+	}
+	& .star {
+		width: 22px;
+		position: absolute;
+		top: 22px;
+		right: 15px;
 	}
 	& article {
 		

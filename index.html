@@ -32,7 +32,13 @@
 					<li><a href="#favorites">Favorites</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
-				<button class="button" id="addTeacher">Add teacher</button>
+				<button
+					class="button"
+					id="addTeacher"
+					onclick="openPopup('addTeacherPopup')"
+				>
+					Add teacher
+				</button>
 			</nav>
 
 			<hr />
@@ -294,11 +300,12 @@
 				<h2>Favorites</h2>
 				<div class="favorites-scroller">
 					<img
+						id="scrollLeftArrow"
 						src="images/left-chevron.png"
 						alt="arrow to scroll left"
 						class="arrow arrow-left"
 					/>
-					<div class="favorites-container">
+					<div class="favorites-container" id="favoritesContainer">
 						<figure class="teacher-card">
 							<div class="photo-container">
 								<img
@@ -368,6 +375,7 @@
 						</figure>
 					</div>
 					<img
+						id="scrollRightArrow"
 						src="images/right-chevron.png"
 						alt="arrow to scroll right"
 						class="arrow arrow-right"
@@ -402,14 +410,25 @@
 					<li><a href="#favorites">Favorites</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
-				<button class="button" id="addTeacher">Add teacher</button>
+				<button
+					class="button"
+					id="addTeacher"
+					onclick="openPopup('addTeacherPopup')"
+				>
+					Add teacher
+				</button>
 			</nav>
 		</main>
-		<div class="popup-overlay" hidden>
-			<dialog class="popup teacher-info" open>
+		<div class="popup-overlay" id="popupOverlay" hidden>
+			<dialog class="popup teacher-info" id="teacherInfoPopup">
 				<header>
 					<h2>Teacher Info</h2>
-					<i class="ico-close" role="img" aria-label="Cancel"></i>
+					<i
+						class="ico-close"
+						role="img"
+						aria-label="Cancel"
+						onclick="closePopup('teacherInfoPopup')"
+					></i>
 				</header>
 				<main>
 					<article>
@@ -439,10 +458,15 @@
 					</footer>
 				</main>
 			</dialog>
-			<dialog class="popup add-teacher" open>
+			<dialog class="popup add-teacher" id="addTeacherPopup">
 				<header>
 					<h2>Add Teacher</h2>
-					<i class="ico-close" role="img" aria-label="Cancel"></i>
+					<i
+						class="ico-close"
+						role="img"
+						aria-label="Cancel"
+						onclick="closePopup('addTeacherPopup')"
+					></i>
 				</header>
 				<main>
 					<form method="dialog" class="add-teacher-form">
@@ -571,6 +595,37 @@
 				</main>
 			</dialog>
 		</div>
-		<script></script>
+		<script>
+			function openPopup(id) {
+				document.getElementById("popupOverlay").hidden = false;
+				document.getElementById(id).setAttribute("open", "true");
+			}
+			function closePopup(id) {
+				document.getElementById("popupOverlay").hidden = true;
+				document.getElementById(id).removeAttribute("open");
+			}
+			document
+				.querySelectorAll(".teacher-card .photo-container")
+				.forEach((card) => {
+					card.addEventListener("click", () => openPopup("teacherInfoPopup"));
+				});
+			let favoritesContainer = document.getElementById("favoritesContainer");
+			document
+				.getElementById("scrollRightArrow")
+				.addEventListener("click", () => {
+					favoritesContainer.scrollBy({
+						left: 140,
+						behavior: "smooth",
+					});
+				});
+			document
+				.getElementById("scrollLeftArrow")
+				.addEventListener("click", () => {
+					favoritesContainer.scrollBy({
+						left: -140,
+						behavior: "smooth",
+					});
+				});
+		</script>
 	</body>
 </html>

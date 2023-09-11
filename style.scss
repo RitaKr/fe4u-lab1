@@ -297,7 +297,7 @@ h2 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: stretch;
-	
+
 	/*margin: 0;*/
 	& .photo-star-container {
 		position: relative;
@@ -328,6 +328,7 @@ h2 {
 	}
 	
 	& .photo-container {
+		cursor: pointer;
 		border-radius: 50%;
 		border: 3px solid $main-lighter-col;
 		color: $main-col;
@@ -396,6 +397,7 @@ h2 {
 		transition: $basic-transition;
 		font-size: 1rem;
 		position: relative;
+		cursor: pointer;
 
 		&:hover {
 			box-shadow: inset 0 -4px 0 $black-col;
@@ -440,15 +442,19 @@ h2 {
 
 	& li:not(.current) {
 		color: $link-col;
+		cursor: pointer;
 	}
 }
 .favorites-scroller {
 	position: relative;
+	
 	& .favorites-container {
 		display: flex;
 		flex-wrap: nowrap;
 		overflow-y: hidden;
 		justify-content: space-between;
+		transition: $basic-transition;
+
 		& .teacher-card {
 			width: 140px;
 			padding: 20px 40px;
@@ -461,7 +467,7 @@ h2 {
 	}
 	& .arrow {
 		display: block;
-
+		cursor: pointer;
 		width: $arrow-width;
 		height: $arrow-width * 1.5;
 		position: absolute;
@@ -588,10 +594,14 @@ footer {
 		@include responsive(tablet) {
 			min-width: calc(100% - $left-right-padding * 2 - 30px);
 		}
+		@include responsive(mobile) {
+			min-width: calc(100% - $left-right-padding * 2);
+			
+		}
 	}
 	&.add-teacher {
 		
-		min-width: calc($min-main-width*0.6);
+		min-width: calc($min-main-width*0.66);
 
 		
 		@include responsive(mobile) {
@@ -603,6 +613,7 @@ footer {
 [class^="ico-"],
 [class*=" ico-"] {
 	display: inline-block;
+	cursor: pointer;
 }
 
 .ico-close::before {

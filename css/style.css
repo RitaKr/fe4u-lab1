@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Import fonts */
 @import url("../fonts/Roboto.css");
 /* Reset and normalize */
@@ -9,6 +10,70 @@ body {
   flex-direction: column;
   align-items: center;
   color: #222222;
+}
+body > main {
+  width: 66%;
+  min-width: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px #ccc;
+}
+@media screen and (max-width: 768px) {
+  body > main {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+body > main header, body > main nav, body > main footer, body > main > section {
+  width: 100%;
+  padding: 1.5vw 5vw;
+}
+@media screen and (max-width: 768px) {
+  body > main header, body > main nav, body > main footer, body > main > section {
+    padding: 4vw 6vw;
+  }
+}
+body > main header, body > main nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body > main header h1 {
+  font-size: 2.5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bolder;
+  color: white;
+  text-shadow: -2px -1px 0 #f75c49, 2px 1px 0 #222222;
+}
+body > main header form {
+  display: flex;
+}
+body > main header input {
+  margin-right: 10px;
+  width: 190px;
+  transition: width 0.4s ease-out;
+}
+body > main header input:hover {
+  width: 340px;
+}
+@media screen and (max-width: 520px) {
+  body > main header input {
+    width: 100%;
+  }
+  body > main header input:hover {
+    width: 65vw;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1280px) {
+  body > main header input:hover {
+    width: 290px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body > main header {
+    flex-direction: column;
+  }
 }
 
 hr {
@@ -22,86 +87,18 @@ hr {
   }
 }
 
-main {
-  width: 66%;
-  min-width: 750px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0 10px #ccc;
-}
-@media screen and (max-width: 768px) {
-  main {
-    width: 100%;
-    min-width: 100%;
-  }
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: bolder;
-  color: white;
-  text-shadow: -2px -1px 0 #f75c49, 2px 1px 0 #222222;
-}
-
-header,
-nav,
-footer,
-main > section {
-  width: 100%;
-  padding: 1.5vw 5vw;
-}
-
-header,
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 input,
 select {
   padding: 10px 5px;
   border: 1px solid #999999;
-  border-radius: 2px;
+  border-radius: 2.5px;
 }
 
 select {
   padding: 8px 5px;
 }
 
-header form {
-  display: flex;
-}
-header input {
-  margin-right: 10px;
-  width: 190px;
-  transition: width 0.4s ease-out;
-}
-header input:hover {
-  width: 340px;
-}
-@media screen and (max-width: 520px) {
-  header input {
-    width: 100%;
-  }
-  header input:hover {
-    width: 65vw;
-  }
-}
-@media screen and (min-width: 769px) and (max-width: 1220px) {
-  header input:hover {
-    width: 290px;
-  }
-}
-@media screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-}
-
-.btn {
+.button {
   padding: 10px 20px;
   background: white;
   color: #f75c49;
@@ -109,12 +106,12 @@ header input:hover {
   font-weight: bold;
   transition: all 0.3s ease;
 }
-.btn:hover {
+.button:hover {
   background-color: #f75c49;
   color: white;
 }
 
-header .btn,
+header .button,
 header input {
   font-size: 0.8rem;
 }
@@ -144,6 +141,9 @@ nav li a:hover {
   }
   nav ul {
     margin: 5px 0;
+  }
+  nav .button {
+    width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -256,6 +256,37 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: stretch;
+  /*margin: 0;*/
+}
+.teacher-card .photo-star-container {
+  position: relative;
+}
+.teacher-card .photo-star-container .star {
+  position: absolute;
+  width: 1.8vw;
+  min-width: 22px;
+  top: 0.3vw;
+  right: -0.3vw;
+  /*right: -22px;*/
+  z-index: 100;
+}
+@media screen and (min-width: 769px) and (max-width: 1280px) {
+  .teacher-card .photo-star-container .star {
+    top: 3px;
+    right: -2px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .teacher-card .photo-star-container .star {
+    width: 4.2vw;
+    top: 0.7vw;
+  }
+}
+@media screen and (max-width: 520px) {
+  .teacher-card .photo-star-container .star {
+    width: 7vw;
+    top: 1.8vw;
+  }
 }
 .teacher-card .photo-container {
   border-radius: 50%;
@@ -280,11 +311,11 @@ h2 {
   font-weight: bold;
   transition: transform 0.3s ease;
 }
-.teacher-card:hover > .photo-container {
+.teacher-card:hover .photo-container {
   color: #cc4836;
   border-color: #cc4836;
 }
-.teacher-card:hover > .photo-container * {
+.teacher-card:hover .photo-container * {
   transform: scale(1.2);
 }
 .teacher-card p {
@@ -401,20 +432,178 @@ h2 {
 }
 @media screen and (max-width: 768px) {
   .favorites-scroller .arrow {
-    width: 18px;
-    height: 27px;
+    width: 16px;
+    height: 24px;
   }
   .favorites-scroller .arrow.arrow-left {
-    left: -18px;
+    left: -16px;
   }
   .favorites-scroller .arrow.arrow-right {
-    right: -18px;
+    right: -16px;
   }
 }
 
 footer p {
   text-align: left;
   padding: 10px 0;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4); /* Adjust the color and opacity as needed */
+  z-index: 999; /* Ensure it's above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.3);
+  color: #222222;
+  font-size: 0.75rem;
+  text-align: left;
+}
+.popup > * {
+  padding: 14px;
+}
+.popup header {
+  background: #464547;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popup header > * {
+  font-size: 1.1rem;
+}
+.popup main {
+  overflow-y: auto;
+  max-height: 90vh;
+}
+@media screen and (max-width: 520px) {
+  .popup article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+.popup article img {
+  float: left;
+  width: 220px;
+  margin-right: 25px;
+}
+@media screen and (max-width: 520px) {
+  .popup article img {
+    max-width: 90%;
+    margin: 0 0 25px 0;
+  }
+}
+.popup article h2 {
+  font-size: 1.65rem;
+  margin-bottom: 21px;
+}
+.popup article h3 {
+  font-size: 1rem;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+.popup article p {
+  padding: 7px 0;
+}
+.popup article p.email {
+  color: #1a9cb0;
+}
+.popup footer p {
+  padding: 25px 0;
+  clear: both;
+}
+.popup.teacher-info {
+  width: calc(66% - 15vw);
+  min-width: calc(750px - 10vw - 30px);
+}
+@media screen and (max-width: 768px) {
+  .popup.teacher-info {
+    min-width: calc(100% - 10vw - 30px);
+  }
+}
+.popup.add-teacher {
+  min-width: 450px;
+}
+@media screen and (max-width: 520px) {
+  .popup.add-teacher {
+    min-width: calc(100% - 10vw - 30px);
+    max-width: calc(100% - 10vw);
+  }
+}
+
+[class^=ico-],
+[class*=" ico-"] {
+  display: inline-block;
+}
+
+.ico-close::before {
+  content: "✖";
+}
+
+a.toggle-map {
+  color: #1a9cb0;
+  text-decoration: dashed underline;
+}
+
+.add-teacher-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0px;
+  font-size: 0.75rem;
+}
+.add-teacher-form > * {
+  padding: 10px;
+}
+@media screen and (max-width: 520px) {
+  .add-teacher-form > * {
+    padding: 5px;
+  }
+}
+.add-teacher-form div {
+  display: flex;
+  flex-direction: column;
+}
+.add-teacher-form div label {
+  margin-bottom: 4px;
+  color: #999999;
+}
+.add-teacher-form fieldset {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.add-teacher-form fieldset > label {
+  margin: 0 30px 0 0;
+  color: #999999;
+}
+.add-teacher-form fieldset span {
+  display: flex;
+  align-items: center;
+}
+.add-teacher-form fieldset span label {
+  margin: 0 5px;
+  color: #222222;
+}
+.add-teacher-form fieldset div {
+  width: 50%;
+}
+.add-teacher-form .button {
+  font-size: 1.375rem;
 }
 
 /*# sourceMappingURL=style.css.map */

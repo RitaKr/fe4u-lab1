@@ -1,336 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Teachinder FE4U lab website">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Teachinder</title>
-</head>
-<body>
-    <main>
-    <header>
-        <h1>Teachinder</h1>
-        <form>
-            <input type="search" placeholder="Name, note or age to search"/>
-            <button type="submit" id="searchTeacher"  class="btn">Search</button>
-        </form>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#teachers">Teachers</a></li>
-            <li><a href="#statistics">Statistics</a></li>
-            <li><a href="#favorites">Favorites</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-        <button class="btn" id="addTeacher">Add teacher</button>
-    </nav>
-    
-        <hr/>
-        <section id="teachers">
-            <h2>Top Teachers</h2>
-            <div class="filters-container">
-                <div>
-                    <label for="ageFilter">Age</label>
-                    <select id="ageFilter">
-                        <option selected>18-31</option>
-                        <option>31+</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="regionFilter">Region</label>
-                    <select id="regionFilter">
-                        <option selected>Europe</option>
-                        <option>Asia</option>
-                        <option>America</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="sexFilter">Sex</label>
-                    <select id="sexFilter">
-                        <option selected>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="checkbox" id="onlyWithPhotoFilter"/>
-                    <label for="onlyWithPhotoFilter">Only with photo</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="onlyFavoritesFilter"/>
-                    <label for="onlyFavoritesFilter">Only favorites</label>
-                </div>
-            </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Teachinder FE4U lab website" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
 
-            <div class="top-teachers-container">
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Ihor Tkachuk</p>
-                        <p data-info="specialty">Chemistry</p>
-                        <p data-info="country">Ukraine</p>
-                    </figcaption>
-                </figure>
+		<title>Teachinder</title>
+	</head>
+	<body>
+		<main>
+			<header>
+				<h1>Teachinder</h1>
+				<form>
+					<input type="search" placeholder="Name, note or age to search" />
+					<button type="submit" id="searchTeacher" class="button">
+						Search
+					</button>
+				</form>
+			</header>
+			<nav>
+				<ul>
+					<li><a href="#teachers">Teachers</a></li>
+					<li><a href="#statistics">Statistics</a></li>
+					<li><a href="#favorites">Favorites</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+				<button class="button" id="addTeacher">Add teacher</button>
+			</nav>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Pragg Rameshbabu</p>
-                        <p data-info="specialty">Chess</p>
-                        <p data-info="country">India</p>
-                    </figcaption>
-                </figure>
+			<hr />
+			<section id="teachers">
+				<h2>Top Teachers</h2>
+				<div class="filters-container">
+					<div>
+						<label for="ageFilter">Age</label>
+						<select id="ageFilter">
+							<option selected>18-31</option>
+							<option>31+</option>
+						</select>
+					</div>
+					<div>
+						<label for="regionFilter">Region</label>
+						<select id="regionFilter">
+							<option selected>Europe</option>
+							<option>Asia</option>
+							<option>America</option>
+						</select>
+					</div>
+					<div>
+						<label for="sexFilter">Sex</label>
+						<select id="sexFilter">
+							<option selected>Male</option>
+							<option>Female</option>
+						</select>
+					</div>
+					<div>
+						<input type="checkbox" id="onlyWithPhotoFilter" />
+						<label for="onlyWithPhotoFilter">Only with photo</label>
+					</div>
+					<div>
+						<input type="checkbox" id="onlyFavoritesFilter" />
+						<label for="onlyFavoritesFilter">Only favorites</label>
+					</div>
+				</div>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Floor Jansen</p>
-                        <p data-info="specialty">Vocal</p>
-                        <p data-info="country">Denmark</p>
-                    </figcaption>
-                </figure>
+				<div class="top-teachers-container">
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<img
+								src="https://randomuser.me/api/portraits/men/46.jpg"
+								alt="teacher's portrait"
+							/>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">Ihor Tkachuk</p>
+							<p data-info="specialty">Chemistry</p>
+							<p data-info="country">Ukraine</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">John Burke</p>
-                        <p data-info="specialty">Computer Science</p>
-                        <p data-info="country">Belgium</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<img
+								src="https://randomuser.me/api/portraits/men/50.jpg"
+								alt="teacher's portrait"
+							/>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">
+								Pragg Rameshbabu
+							</p>
+							<p data-info="specialty">Chess</p>
+							<p data-info="country">India</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Ari Tang</p>
-                        <p data-info="specialty">Biology</p>
-                        <p data-info="country">China</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-star-container">
+							<div class="photo-container">
+								<img src="images/star.png" alt="star-icon" class="star" />
+								<img
+									src="https://randomuser.me/api/portraits/women/10.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+						</div>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/women/53.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Rachel Andrew</p>
-                        <p data-info="specialty">Medicine</p>
-                        <p data-info="country">UK</p>
-                    </figcaption>
-                </figure>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">Floor Jansen</p>
+							<p data-info="specialty">Vocal</p>
+							<p data-info="country">Denmark</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <span class="initials">A.M</span>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Anna Muzychuk</p>
-                        <p data-info="specialty">Chess</p>
-                        <p data-info="country">Belarus</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<img
+								src="https://randomuser.me/api/portraits/men/62.jpg"
+								alt="teacher's portrait"
+							/>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">John Burke</p>
+							<p data-info="specialty">Computer Science</p>
+							<p data-info="country">Belgium</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <span class="initials">R.L</span>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Radoslaw Ljuboevic</p>
-                        <p data-info="specialty">Physics</p>
-                        <p data-info="country">Poland</p>
-                    </figcaption>
-                </figure>
-                
-            </div>
-        </section>
-        <hr>
-        <section id="statistics">
-            <h2>Statistics</h2>
-                <div class="table-container">
-                <table class="statistics-table">
-                    <thead>
-                        <tr>
-                            <th>Name <span class="arrow">↓</span></th>
-                            <th>Specialty <span class="arrow">↓</span></th>
-                            <th>Age <span class="arrow">↓</span></th>
-                            <th>Gender <span class="arrow">↓</span></th>
-                            <th>Nationality <span class="arrow">↓</span></th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>Daisy Alexander</td>
-                        <td>Chemistry</td>
-                        <td>28</td>
-                        <td>Female</td>
-                        <td>Vietnam</td>
-                    </tr>
-                    <tr>
-                        <td>Julia Bradley</td>
-                        <td>Math</td>
-                        <td>26</td>
-                        <td>Female</td>
-                        <td>USA</td>
-                    </tr>
-                    <tr>
-                        <td>Rita Hart</td>
-                        <td>Art</td>
-                        <td>41</td>
-                        <td>Female</td>
-                        <td>Ireland</td>
-                    </tr>
-                    <tr>
-                        <td>Jonathan Jacobs</td>
-                        <td>Math</td>
-                        <td>32</td>
-                        <td>Male</td>
-                        <td>England</td>
-                    </tr>
-                    <tr>
-                        <td>Nathaniel White</td>
-                        <td>Computer Science</td>
-                        <td>37</td>
-                        <td>Male</td>
-                        <td>Austria</td>
-                    </tr>
-                    <tr>
-                        <td>Frank Medina</td>
-                        <td>English</td>
-                        <td>43</td>
-                        <td>Male</td>
-                        <td>Italy</td>
-                    </tr>
-                    <tr>
-                        <td>Ella Curtis</td>
-                        <td>Chess</td>
-                        <td>34</td>
-                        <td>Female</td>
-                        <td>USA</td>
-                    </tr>
-                    <tr>
-                        <td>Claire Simmmons</td>
-                        <td>Art</td>
-                        <td>38</td>
-                        <td>Female</td>
-                        <td>Netherlands</td>
-                    </tr>
-                    <tr>
-                        <td>Benjamin Knight</td>
-                        <td>Biology</td>
-                        <td>44</td>
-                        <td>Male</td>
-                        <td>Scotland</td>
-                    </tr>
-                    <tr>
-                        <td>Norma Rose</td>
-                        <td>Statistics</td>
-                        <td>36</td>
-                        <td>Female</td>
-                        <td>France</td>
-                    </tr>
-                    <tbody>
+					<figure class="teacher-card">
+						<div class="photo-star-container">
+							<img src="images/star.png" alt="star-icon" class="star" />
+							<div class="photo-container">
+								<img
+									src="https://randomuser.me/api/portraits/women/60.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">Ari Tang</p>
+							<p data-info="specialty">Biology</p>
+							<p data-info="country">China</p>
+						</figcaption>
+					</figure>
 
-                    </tbody>
-                </table>
-            </div>
-                <ul class="pages-list">
-                    <li class="current">1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <span>...</span>
-                    <li>Last</li>
-                </ul>
-           
-        </section>
-        <hr/>
-        <section id="favorites">
-            <h2>Favorites</h2>
-            <div class="favorites-scroller">
-                <img src="images/left-chevron.png" alt="arrow to scroll left" class="arrow arrow-left">
-                <div class="favorites-container">
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Ihor Tkachuk</p>
-                        <p data-info="country">Ukraine</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<img
+								src="https://randomuser.me/api/portraits/women/53.jpg"
+								alt="teacher's portrait"
+							/>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">
+								Rachel Andrew
+							</p>
+							<p data-info="specialty">Medicine</p>
+							<p data-info="country">UK</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <span class="initials">A.M</span>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Anna Makarevich</p>
-                        <p data-info="country">Belarus</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<span class="initials">A.M</span>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">
+								Anna Muzychuk
+							</p>
+							<p data-info="specialty">Chess</p>
+							<p data-info="country">Belarus</p>
+						</figcaption>
+					</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">John Burke</p>
-                        <p data-info="country">Belgium</p>
-                    </figcaption>
-                </figure>
+					<figure class="teacher-card">
+						<div class="photo-container">
+							<span class="initials">R.L</span>
+						</div>
+						<figcaption>
+							<p role="heading" aria-level="3" data-info="name">
+								Radoslaw Ljuboevic
+							</p>
+							<p data-info="specialty">Physics</p>
+							<p data-info="country">Poland</p>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+			<hr />
+			<section id="statistics">
+				<h2>Statistics</h2>
+				<div class="table-container">
+					<table class="statistics-table">
+						<thead>
+							<tr>
+								<th>Name <span class="arrow">↓</span></th>
+								<th>Specialty <span class="arrow">↓</span></th>
+								<th>Age <span class="arrow">↓</span></th>
+								<th>Gender <span class="arrow">↓</span></th>
+								<th>Nationality <span class="arrow">↓</span></th>
+							</tr>
+						</thead>
+						<tr>
+							<td>Daisy Alexander</td>
+							<td>Chemistry</td>
+							<td>28</td>
+							<td>Female</td>
+							<td>Vietnam</td>
+						</tr>
+						<tr>
+							<td>Julia Bradley</td>
+							<td>Math</td>
+							<td>26</td>
+							<td>Female</td>
+							<td>USA</td>
+						</tr>
+						<tr>
+							<td>Rita Hart</td>
+							<td>Art</td>
+							<td>41</td>
+							<td>Female</td>
+							<td>Ireland</td>
+						</tr>
+						<tr>
+							<td>Jonathan Jacobs</td>
+							<td>Math</td>
+							<td>32</td>
+							<td>Male</td>
+							<td>England</td>
+						</tr>
+						<tr>
+							<td>Nathaniel White</td>
+							<td>Computer Science</td>
+							<td>37</td>
+							<td>Male</td>
+							<td>Austria</td>
+						</tr>
+						<tr>
+							<td>Frank Medina</td>
+							<td>English</td>
+							<td>43</td>
+							<td>Male</td>
+							<td>Italy</td>
+						</tr>
+						<tr>
+							<td>Ella Curtis</td>
+							<td>Chess</td>
+							<td>34</td>
+							<td>Female</td>
+							<td>USA</td>
+						</tr>
+						<tr>
+							<td>Claire Simmmons</td>
+							<td>Art</td>
+							<td>38</td>
+							<td>Female</td>
+							<td>Netherlands</td>
+						</tr>
+						<tr>
+							<td>Benjamin Knight</td>
+							<td>Biology</td>
+							<td>44</td>
+							<td>Male</td>
+							<td>Scotland</td>
+						</tr>
+						<tr>
+							<td>Norma Rose</td>
+							<td>Statistics</td>
+							<td>36</td>
+							<td>Female</td>
+							<td>France</td>
+						</tr>
+						<tbody></tbody>
+					</table>
+				</div>
+				<ul class="pages-list">
+					<li class="current">1</li>
+					<li>2</li>
+					<li>3</li>
+					<span>...</span>
+					<li>Last</li>
+				</ul>
+			</section>
+			<hr />
+			<section id="favorites">
+				<h2>Favorites</h2>
+				<div class="favorites-scroller">
+					<img
+						src="images/left-chevron.png"
+						alt="arrow to scroll left"
+						class="arrow arrow-left"
+					/>
+					<div class="favorites-container">
+						<figure class="teacher-card">
+							<div class="photo-container">
+								<img
+									src="https://randomuser.me/api/portraits/men/46.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+							<figcaption>
+								<p role="heading" aria-level="3" data-info="name">
+									Ihor Tkachuk
+								</p>
+								<p data-info="country">Ukraine</p>
+							</figcaption>
+						</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/women/60.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Ari Tang</p>
-                        <p data-info="country">China</p>
-                    </figcaption>
-                </figure>
+						<figure class="teacher-card">
+							<div class="photo-container">
+								<span class="initials">A.M</span>
+							</div>
+							<figcaption>
+								<p role="heading" aria-level="3" data-info="name">
+									Anna Makarevich
+								</p>
+								<p data-info="country">Belarus</p>
+							</figcaption>
+						</figure>
 
-                <figure class="teacher-card">
-                    <div class="photo-container">
-                        <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="teacher's portrait"/>
-                    </div>
-                    <figcaption>
-                        <p role="heading" aria-level="3" data-info="name">Floor Jansen</p>
-                        <p data-info="country">Denmark</p>
-                    </figcaption>
-                </figure>
-            </div>
-            <img src="images/right-chevron.png" alt="arrow to scroll right" class="arrow arrow-right">
-            </div>
-            
-        </section>
-        <hr/>
-    <footer id="about">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						<figure class="teacher-card">
+							<div class="photo-container">
+								<img
+									src="https://randomuser.me/api/portraits/men/62.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+							<figcaption>
+								<p role="heading" aria-level="3" data-info="name">John Burke</p>
+								<p data-info="country">Belgium</p>
+							</figcaption>
+						</figure>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore aliqua. </p>
+						<figure class="teacher-card">
+							<div class="photo-container">
+								<img
+									src="https://randomuser.me/api/portraits/women/60.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+							<figcaption>
+								<p role="heading" aria-level="3" data-info="name">Ari Tang</p>
+								<p data-info="country">China</p>
+							</figcaption>
+						</figure>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et magna aliqua. </p>
-    </footer>
-    <nav>
-        <ul>
-            <li><a href="#teachers">Teachers</a></li>
-            <li><a href="#statistics">Statistics</a></li>
-            <li><a href="#favorites">Favorites</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-        <button class="btn" id="addTeacher">Add teacher</button>
-    </nav>
-</main>
-<script>
-    
-</script>
-</body>
+						<figure class="teacher-card">
+							<div class="photo-container">
+								<img
+									src="https://randomuser.me/api/portraits/women/10.jpg"
+									alt="teacher's portrait"
+								/>
+							</div>
+							<figcaption>
+								<p role="heading" aria-level="3" data-info="name">
+									Floor Jansen
+								</p>
+								<p data-info="country">Denmark</p>
+							</figcaption>
+						</figure>
+					</div>
+					<img
+						src="images/right-chevron.png"
+						alt="arrow to scroll right"
+						class="arrow arrow-right"
+					/>
+				</div>
+			</section>
+			<hr />
+			<footer id="about">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur.
+				</p>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+					eiusmod tempor incididunt ut labore et dolore aliqua.
+				</p>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+					eiusmod tempor incididunt ut labore et magna aliqua.
+				</p>
+			</footer>
+			<nav>
+				<ul>
+					<li><a href="#teachers">Teachers</a></li>
+					<li><a href="#statistics">Statistics</a></li>
+					<li><a href="#favorites">Favorites</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+				<button class="button" id="addTeacher">Add teacher</button>
+			</nav>
+		</main>
+		<div class="popup-overlay" hidden>
+			<dialog class="popup teacher-info" open>
+				<header>
+					<h2>Teacher Info</h2>
+					<i class="ico-close" role="img" aria-label="Cancel"></i>
+				</header>
+				<main>
+					<article>
+						<img
+							src="https://randomuser.me/api/portraits/men/46.jpg"
+							alt="teacher's portrait"
+						/>
+						<section>
+							<h2>Ihor Tkachuk</h2>
+							<h3>Chemistry</h3>
+							<p>Kyiv, Ukraine</p>
+							<p>35, Male</p>
+							<p class="email">ihor_tkachuk@domain.com</p>
+							<p>+380964993252</p>
+						</section>
+					</article>
+					<footer>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat
+							nulla pariatur.
+						</p>
+						<a href="" class="toggle-map">toggle map</a>
+					</footer>
+				</main>
+			</dialog>
+			<dialog class="popup add-teacher" open>
+				<header>
+					<h2>Add Teacher</h2>
+					<i class="ico-close" role="img" aria-label="Cancel"></i>
+				</header>
+				<main>
+					<form method="dialog" class="add-teacher-form">
+						<div class="row">
+							<div class="col-12">
+								<label for="nameInput">Name</label>
+								<input
+									type="text"
+									id="nameInput"
+									name="nameInput"
+									placeholder="Enter name"
+									required
+								/>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<label for="specialtyInput">Specialty</label>
+								<select id="specialtyInput" required>
+									<option>Art</option>
+									<option>Biology</option>
+									<option>Chemistry</option>
+									<option>Chess</option>
+									<option>Computer Science</option>
+									<option>English</option>
+									<option selected>Mathematics</option>
+									<option>Statistics</option>
+								</select>
+							</div>
+						</div>
+						<fieldset class="row">
+							<div class="col-6">
+								<label for="countryInput">Country</label>
+								<select id="countryInput" required>
+									<option>Austria</option>
+									<option>China</option>
+									<option>England</option>
+									<option>France</option>
+									<option>Ireland</option>
+									<option>Italy</option>
+									<option>Netherlands</option>
+									<option>Scotland</option>
+									<option selected>Ukraine</option>
+									<option>USA</option>
+									<option>Vietnam</option>
+								</select>
+							</div>
+							<div class="col-6">
+								<label for="cityInput">City</label>
+								<input
+									type="text"
+									id="cityInput"
+									name="cityInput"
+									placeholder=""
+									required
+								/>
+							</div>
+						</fieldset>
+						<fieldset class="row">
+							<div class="col-6">
+								<label for="emailInput">Email</label>
+								<input
+									type="email"
+									id="emailInput"
+									name="emailInput"
+									placeholder=""
+									required
+								/>
+							</div>
+							<div class="col-6">
+								<label for="telInput">Phone</label>
+								<input
+									type="tel"
+									pattern="\+380\d{2}\d{3}\d{4}"
+									id="telInput"
+									name="telInput"
+									placeholder=""
+									required
+								/>
+							</div>
+						</fieldset>
+						<div class="row">
+							<div class="col-6">
+								<label for="dobInput">Date of birth</label>
+								<input
+									type="date"
+									id="dobInput"
+									name="dobInput"
+									placeholder=""
+									required
+								/>
+							</div>
+						</div>
+						<div class="row">
+							<fieldset class="col-lg-6 col-12">
+								<label>Sex</label>
+								<span>
+									<label for="male">Male</label>
+									<input type="radio" name="sex" id="male" required />
+								</span>
+								<span>
+									<label for="female">Female</label>
+									<input type="radio" name="sex" id="female" required />
+								</span>
+							</fieldset>
+						</div>
+						<div class="row">
+							<fieldset class="col-lg-6 col-12">
+								<label for="colorInput">Background color</label>
+								<input type="color" id="colorInput" required />
+							</fieldset>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<label for="notesInput">Notes (optional)</label>
+								<textarea if="notesInput" rows="6"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<button type="submit" class="button">Add</button>
+							</div>
+						</div>
+					</form>
+				</main>
+			</dialog>
+		</div>
+		<script></script>
+	</body>
 </html>
